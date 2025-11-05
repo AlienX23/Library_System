@@ -32,6 +32,7 @@ public class LibrarySystemApp {
             System.out.println("3. Return a book");
             System.out.println("4. List all books");
             System.out.println("5. Find a book");
+            System.out.println("6. Available book list");
             System.out.println("0. Exit");
             System.out.print("Please type the option number: ");
 
@@ -147,6 +148,10 @@ public class LibrarySystemApp {
                             System.out.println("Option Unavailable!!!");
                             break;
                     }
+                    break;
+
+                case 6: // show available book list that can check out
+                    library.showAvailableBook();
                     break;
 
                 case 0: // Shut down

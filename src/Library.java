@@ -169,7 +169,10 @@ public class Library {
             // if current index book (isCheckedOut == false)
             // put the book.toString() a.k.a book information in StringBuilder
             if (!book.getIsCheckedOut()) {
-                builder.append(book);
+                // formatting the builder to enhance the readability of string
+                builder.append("ID: ").append(book.getBookID()).append("\t\t\t")
+                        .append("| Book Name: ").append(book.getTitle())
+                        .append(" (Written by: ").append(book.getAuthor()).append(")\n\n");
                 // if at least one book was found, it will turn true ( indicating library have available books )
                 anyAvailable = true;
             }
