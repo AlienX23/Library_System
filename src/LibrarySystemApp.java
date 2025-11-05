@@ -55,6 +55,9 @@ public class LibrarySystemApp {
 
                 // user function
                 case 2: // Checkout a book
+                    // show available books list, for enhance user experience
+                    library.showAvailableBook();
+
                     // give user 2 ways to check out a book (By title or ID)
                     System.out.println("\nHow do you want to checkout the book?");
                     System.out.println("1. By title");
