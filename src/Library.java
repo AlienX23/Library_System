@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Library {
-    private String libraryName;
-    private ArrayList<Book> books;
+    private final String libraryName;
+    private final ArrayList<Book> books;
 
     public Library(String libraryName) {
         this.libraryName = libraryName;
@@ -117,7 +117,7 @@ public class Library {
         // if book with desired title or id was found
         if (targetBook != null) {
             // perform checkout
-            targetBook.checkout();
+            targetBook.access();
             /* should not call checkout from Book class which enhance complexity
              I will fix it to just update the isCheckedOut boolean of Book class.
             */
@@ -131,7 +131,7 @@ public class Library {
     public void checkoutBook(int id) {
         Book targetBook = findBook(id);
         if (targetBook != null) {
-            targetBook.checkout();
+            targetBook.access();
         } else {
             System.out.printf("%nBook with ID %d is not found in the library.%n", id);
         }
@@ -168,10 +168,11 @@ public class Library {
         for (Book book : books) {
             // if current index book (isCheckedOut == false)
             // put the book.toString() a.k.a book information in StringBuilder
-            if (!book.getIsCheckedOut()) {
+            if (book.isAvailable()) {
                 // formatting the builder to enhance the readability of string
-                builder.append("ID: ").append(book.getBookID()).append("\t\t\t")
-                        .append("| Book Name: ").append(book.getTitle())
+                builder.append("ID: ").append(book.getBookID()).append("\t\t")
+                        .append("| ( ").append(book.getClass().getSimpleName()).append(" )")
+                        .append(" Book Name: ").append(book.getTitle())
                         .append(" (Written by: ").append(book.getAuthor()).append(")\n\n");
                 // if at least one book was found, it will turn true ( indicating library have available books )
                 anyAvailable = true;

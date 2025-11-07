@@ -1,18 +1,18 @@
 import java.util.Scanner;
 
 public class LibrarySystemApp {
-    private Library library = new Library("Helmington Public Library");
+    private final Library library = new Library("Helmington Public Library");
     private final Scanner scanner = new Scanner(System.in);
 
     // Main control flow of the program
     public void run() {
         // Create sample books
-        Book b1 = new Book("The Lord of the Rings", "J.R.R. Tolkien");
-        Book b2 = new Book("Pride and Prejudice", "Jane Austen");
-        Book b3 = new Book("1984", "George Orwell");
-        Book b4 = new Book("To Kill a Mockingbird", "Harper Lee");
-        Book b5 = new Book("The Great Gatsby", "F. Scott Fitzgerald");
-        Book b6 = new Book("The Animal Farm", "George Orwell");
+        Book b1 = new PhysicalBook("The Lord of the Rings", "J.R.R. Tolkien", 240);
+        Book b2 = new PhysicalBook("Pride and Prejudice", "Jane Austen", 350);
+        Book b3 = new EBook("How to Win Friends and Influence People", "Dale Carnegie", "EPUB", 4.5);
+        Book b4 = new EBook("Your Name", "Makoto Shinkai", "PDF", 6.32);
+        Book b5 = new AudioBook("Atomic Habits", "James Clear", "Random Joe", 1.5, "MP4");
+        Book b6 = new AudioBook("The Psychology of Money", "Morgan Housel", "Christ", 2, "MP4");
 
         // Add books to the library
         library.addBook(b1);
@@ -48,9 +48,13 @@ public class LibrarySystemApp {
                     String newTitle = scanner.nextLine(); // get new book title
                     System.out.print("Enter the author of the book: ");
                     String newAuthor = scanner.nextLine(); // get new book author name
+                    System.out.print("Enter the total pages of the book: ");
+                    int totalPages = scanner.nextInt();
+                    scanner.nextLine();
+
                     // create new book object by calling Book constructor
                     // and use newly created book object as arguments for the addBook function
-                    library.addBook(new Book(newTitle, newAuthor));
+                    library.addBook(new PhysicalBook(newTitle, newAuthor, totalPages));
                     break;
 
                 // user function
